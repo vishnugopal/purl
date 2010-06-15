@@ -86,15 +86,23 @@ class Purl
 				break;
 			default:
 		}
-	
+			
+		if($this->follow_redirects) {
+			curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+			curl_setopt($curl, CURLOPT_MAXREDIRS, 10);
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, FALSE);
+			curl_setopt($curl, CURLOPT_NOBODY, TRUE);
+			if (curl_exec($curl)) {
+				$this->url = curl_getinfo($curl, CURLINFO_EFFECTIVE_URL);
+				$this->follow_redirects = false;
+				return $this->dispatch();
+			}
+		}
+		
 		curl_setopt($curl, CURLOPT_HEADER, 1);
 		curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($curl, CURLOPT_TIMEOUT, 10);
-		
-		if($this->follow_redirects) {
-			curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-		}
 
 		$result = curl_exec($curl);
 		curl_close($curl);
