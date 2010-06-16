@@ -1,4 +1,4 @@
-body { margin: 0; padding: 0; font: 12px/10px Verdana, Arial, sans-serif; }
+body { margin: 0; padding: 0; font: 12px/12px Verdana, Arial, sans-serif; }
 #wrap { position:absolute; width: 50%; left: 50%; margin-left: -25%; }
 input, textarea { padding: 5px; }
 input[name='url'] { width: 80%; }
