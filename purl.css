@@ -2,6 +2,7 @@ body { margin: 0; padding: 0; font: 12px/8px Verdana, Arial, sans-serif; }
 #wrap { position:absolute; width: 50%; left: 50%; margin-left: -25%; }
 input, textarea { padding: 5px; }
 input[name='url'] { width: 80%; }
+input[name='param-vals[]'] { width: 60%; }
 textarea, pre { width: 80%; max-width: 80%; padding: 10px; overflow-x: auto; overflow-y: hidden; }
 pre span.header_name { color: red; }
 pre span.header_value { color: blue; }
